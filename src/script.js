@@ -19,20 +19,20 @@ const logHealth = (player, health) => {
     console.log(`${player} health: ${health}`)
 }
 
-const logDeath = (winner, loser) => {
+let logDeath = (winner, loser) => {
     console.log(`${winner} defeated ${loser}`)
 }
 
 const isDead = (health) => {
     if (health <= 0) {
         return true;
-    } else if (health >= 0) {
+    } else if (health > 0) {
         return false;
     }
 }
 
 function fight(player1, player2, player1Health, player2Health) {
-    while (true) {
+    while (player1Health && player2Health > 0) {
            let attacker = chooseOption(player1, player2);
         if (attacker = player1) {
             player2Health = attackPlayer(player2Health);
