@@ -11,9 +11,7 @@ const chooseOption = (opt1, opt2) => {
     }
 }
 
-function attackPlayer(health) {
-    return (health - randomDamage());
-}
+
 
 const logHealth = (player, health) => {
     console.log(`${player} health: ${health}`)
@@ -42,6 +40,7 @@ function fight(player1, player2, player1Health, player2Health) {
                 logDeath(player1, player2);
                 break
             }
+            return
         } else if (attacker = player2) {
             player1Health = attackPlayer(player1Health);
             logHealth(player1, player1Health);
@@ -50,8 +49,13 @@ function fight(player1, player2, player1Health, player2Health) {
                 logDeath(player2, player1);
                 break
             }
+            return
         }
     }
 }
 
 fight("Felix", "El Goblino", 100, 100);
+
+attackPlayer(health); {
+    return (health - randomDamage());
+}
