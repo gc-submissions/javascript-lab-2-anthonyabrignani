@@ -4,11 +4,7 @@ const randomDamage = () => {
 
 const chooseOption = (opt1, opt2) => {
     let randNum = Math.round(Math.random());
-    if (randNum === 0) {
-        return opt1;
-    } else if (randNum === 1) {
-        return opt2;
-    }
+    return randNum === 0 ? opt1 : opt2;
 }
 
 function attackPlayer(health) {
@@ -32,9 +28,9 @@ const isDead = (health) => {
 }
 
 function fight(player1, player2, player1Health, player2Health) {
-    while (player1Health && player2Health > 0) {
+    while (player1Health > 0 && player2Health > 0) {
            let attacker = chooseOption(player1, player2);
-        if (attacker = player1) {
+        if (attacker === player1) {
             player2Health = attackPlayer(player2Health);
             logHealth(player2, player2Health);
             logDeath(player1, player2);
@@ -42,8 +38,7 @@ function fight(player1, player2, player1Health, player2Health) {
                 logDeath(player1, player2);
                 break
             }
-            return
-        } else if (attacker = player2) {
+        } else if (attacker === player2) {
             player1Health = attackPlayer(player1Health);
             logHealth(player1, player1Health);
             logDeath(player2, player1);
@@ -51,7 +46,6 @@ function fight(player1, player2, player1Health, player2Health) {
                 logDeath(player2, player1);
                 break
             }
-            return
         }
     }
 }
